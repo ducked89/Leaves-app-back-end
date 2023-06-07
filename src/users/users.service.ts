@@ -24,6 +24,7 @@ export class UsersService extends BaseService<User> {
       const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
 
       const newUser = new this.userModel({
+        username: createUserDto.username,
         email: createUserDto.email,
         password: hashedPassword,
         deleted: false,
@@ -41,6 +42,22 @@ export class UsersService extends BaseService<User> {
         { _v: 0, password: 0 },
       );
       return users;
+    } catch (error) {
+      return { success: false, error: true, msg: error.message };
+    }
+  }
+
+  async findByEmail(email: string): Promise<User | any> {
+    try {
+      return await this.userModel.findOne({ email: email });
+    } catch (error) {
+      return { success: false, error: true, msg: error.message };
+    }
+  }
+
+  async findByUsername(username: string): Promise<User | any> {
+    try {
+      return await this.userModel.findOne({ username: username }).lean();
     } catch (error) {
       return { success: false, error: true, msg: error.message };
     }
