@@ -13,6 +13,10 @@ export class User extends BaseSchema {
   @IsEmail()
   email: string;
 
+  @Prop({ type: String, required: true, index: true, unique: true })
+  @IsString()
+  username: string;
+
   @Prop({ required: true })
   @IsString()
   password: string;
