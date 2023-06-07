@@ -1,9 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
+import { UsersService } from 'src/users/users.service';
 // import { CreateAuthDto } from './dto/create-auth.dto';
 // import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Injectable()
 export class AuthService {
+  constructor(private usersService: UsersService) {}
+
+  async validateUser(username: string, password: string): Promise<any> {
+    const user = await this.usersService.findByUsername(username);
+
+    if (user && (await bcrypt.compare(password, user.password))) {
+      const { password, ...rest } = user;
+      return rest;
+    }
+
+    return null;
+  }
+
   // create(createAuthDto: CreateAuthDto) {
   //   return 'This action adds a new auth';
   // }
