@@ -41,6 +41,7 @@ export abstract class BaseService<T extends BaseSchema> {
         {
           ...updateValue,
         },
+        { new: true },
       );
       return this.findById(id);
     } catch (error) {
