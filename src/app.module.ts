@@ -2,8 +2,15 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
+import { DepartmentModule } from './department/department.module';
 import { SettingsModule } from './settings/settings.module';
+import { UsersModule } from './users/users.module';
+import { RolesModule } from './roles/roles.module';
+import { PermissionModule } from './permission/permission.module';
+import { LeaveTypeModule } from './leave_type/leave_type.module';
+import { HolidaysModule } from './holidays/holidays.module';
+import { EmployeeModule } from './employee/employee.module';
+import { LeaveModule } from './leave/leave.module';
 
 @Module({
   imports: [
@@ -15,6 +22,13 @@ import { SettingsModule } from './settings/settings.module';
     AuthModule,
     UsersModule,
     SettingsModule,
+    DepartmentModule,
+    RolesModule,
+    PermissionModule,
+    LeaveTypeModule,
+    HolidaysModule,
+    EmployeeModule,
+    LeaveModule,
   ],
   controllers: [],
   providers: [],

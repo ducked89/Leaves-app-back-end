@@ -13,7 +13,7 @@ import { LocalStrategy } from './local.strategy';
     JwtModule.registerAsync({
       useFactory: () => ({
         secret: appConfig().appSecret,
-        signOptions: { expiresIn: `1h` },
+        signOptions: { expiresIn: `2d` },
       }),
     }),
     UsersModule,

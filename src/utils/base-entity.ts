@@ -1,9 +1,12 @@
 import { Prop } from '@nestjs/mongoose';
+import { IsString } from 'class-validator';
 
 export abstract class BaseSchema {
-  @Prop()
-  createdAt: Date;
+  @IsString()
+  @Prop({ type: String, required: false, default: new Date().toISOString() })
+  createdAt?: string;
 
-  @Prop()
-  updatedAt: Date;
+  @IsString()
+  @Prop({ type: String, required: false, default: new Date().toISOString() })
+  updatedAt?: string;
 }

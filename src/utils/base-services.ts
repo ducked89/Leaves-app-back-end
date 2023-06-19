@@ -15,7 +15,7 @@ export abstract class BaseService<T extends BaseSchema> {
 
   async findById(id: any): Promise<T | Response<T>> {
     try {
-      const data = await this.repository.findOne({ id: id });
+      const data = await this.repository.findOne({ _id: id });
       if (!data) return { success: false, error: `Data not found.` };
 
       return data;

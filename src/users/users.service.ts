@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { Model } from 'mongoose';
 import { BaseService } from 'src/utils/base-services';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -21,12 +21,13 @@ export class UsersService extends BaseService<User> {
         throw new BadRequestException('Passwords do not match!');
       }
 
-      const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+      const hashedPassword = await bcrypt.hash(createUserDto.password, 12);
 
       const newUser = new this.userModel({
         username: createUserDto.username,
         email: createUserDto.email,
         password: hashedPassword,
+        role_id: createUserDto.role_id,
         deleted: false,
       });
       return await newUser.save();
@@ -37,10 +38,9 @@ export class UsersService extends BaseService<User> {
 
   async findAll(): Promise<User[] | any> {
     try {
-      const users: User[] = await this.userModel.find(
-        {},
-        { _v: 0, password: 0 },
-      );
+      const users: User[] = await this.userModel
+        .find({}, { _v: 0, password: 0 })
+        .populate('role_id');
       return users;
     } catch (error) {
       return { success: false, error: true, msg: error.message };
@@ -49,7 +49,9 @@ export class UsersService extends BaseService<User> {
 
   async findByEmail(email: string): Promise<User | any> {
     try {
-      return await this.userModel.findOne({ email: email });
+      return (await this.userModel.findOne({ email: email })).populate(
+        'role_id',
+      );
     } catch (error) {
       return { success: false, error: true, msg: error.message };
     }
@@ -57,7 +59,10 @@ export class UsersService extends BaseService<User> {
 
   async findByUsername(username: string): Promise<User | any> {
     try {
-      return await this.userModel.findOne({ username: username }).lean();
+      return await this.userModel
+        .findOne({ username: username })
+        .populate('role_id')
+        .lean();
     } catch (error) {
       return { success: false, error: true, msg: error.message };
     }
@@ -65,7 +70,7 @@ export class UsersService extends BaseService<User> {
 
   async findOne(id: string): Promise<User | any> {
     try {
-      return await this.userModel.findById(id);
+      return await this.userModel.findById(id).populate('role_id');
     } catch (error) {
       return { success: false, error: true, msg: error.message };
     }

@@ -6,7 +6,7 @@ import { Type } from './type.enum';
 
 export type SettingDocument = HydratedDocument<Setting>;
 
-@Schema()
+@Schema({ timestamps: true, collection: 'settings' })
 export class Setting extends BaseSchema {
   @Prop({ type: String, required: true, index: true, unique: true })
   @IsString()

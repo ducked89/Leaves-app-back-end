@@ -23,6 +23,7 @@ lerna-debug.log*
 /.idea
 .project
 .dev.env
+.prod.env
 .classpath
 .c9/
 *.launch
@@ -35,3 +36,9 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
