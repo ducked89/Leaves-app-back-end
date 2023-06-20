@@ -11,6 +11,7 @@ import { LeaveTypeModule } from './leave_type/leave_type.module';
 import { HolidaysModule } from './holidays/holidays.module';
 import { EmployeeModule } from './employee/employee.module';
 import { LeaveModule } from './leave/leave.module';
+import { FiscalModule } from './fiscal/fiscal.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { LeaveModule } from './leave/leave.module';
     HolidaysModule,
     EmployeeModule,
     LeaveModule,
+    FiscalModule,
   ],
   controllers: [],
   providers: [],
