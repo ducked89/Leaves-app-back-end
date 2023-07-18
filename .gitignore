@@ -23,7 +23,7 @@ lerna-debug.log*
 /.idea
 .project
 .dev.env
-.prod.env
+# .prod.env
 .classpath
 .c9/
 *.launch
@@ -39,6 +39,6 @@ lerna-debug.log*
 
 
 # Docker
-Dockerfile
-docker-compose.yml
-.dockerignore
+# Dockerfile
+# docker-compose.yml
+# .dockerignore

@@ -13,11 +13,11 @@ import { CreateLeaveTypeDto } from './dto/create-leave_type.dto';
 import { UpdateLeaveTypeDto } from './dto/update-leave_type.dto';
 import { LeaveTypeService } from './leave_type.service';
 
-@UseGuards(JwtAuthGuard)
 @Controller('leave-type')
 export class LeaveTypeController {
   constructor(private readonly leaveTypeService: LeaveTypeService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createLeaveTypeDto: CreateLeaveTypeDto) {
     return this.leaveTypeService.create(createLeaveTypeDto);
@@ -28,11 +28,13 @@ export class LeaveTypeController {
     return this.leaveTypeService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.leaveTypeService.findById(id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -41,6 +43,7 @@ export class LeaveTypeController {
     return this.leaveTypeService.update(id, updateLeaveTypeDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.leaveTypeService.remove(id);

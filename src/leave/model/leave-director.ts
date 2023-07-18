@@ -11,7 +11,7 @@ export default class Director {
       .setNumberOfDay(request.number_of_days)
       .setStartDate(request.start_date)
       .setEndDate(request.end_date)
-      .setJustification(request.justification)
+      .setJustification(request.justify)
       .setRemark(request.remarks)
       .getResult();
   }

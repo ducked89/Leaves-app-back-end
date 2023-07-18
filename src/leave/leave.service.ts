@@ -83,7 +83,8 @@ export class LeaveService extends BaseService<Leave> {
           (accumulator: number, currentValue: any) => {
             if (
               currentValue.leave_type._id.toString() ===
-              data.leave_type.toString()
+                data.leave_type.toString() &&
+              currentValue.status !== 'Rejected'
             ) {
               return accumulator + currentValue.leave_type.number_of_days;
             }

@@ -3,20 +3,20 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { DepartmentModule } from './department/department.module';
+import { EmployeeModule } from './employee/employee.module';
+import { FiscalModule } from './fiscal/fiscal.module';
+import { HolidaysModule } from './holidays/holidays.module';
+import { LeaveModule } from './leave/leave.module';
+import { LeaveTypeModule } from './leave_type/leave_type.module';
+import { PermissionModule } from './permission/permission.module';
+import { RolesModule } from './roles/roles.module';
 import { SettingsModule } from './settings/settings.module';
 import { UsersModule } from './users/users.module';
-import { RolesModule } from './roles/roles.module';
-import { PermissionModule } from './permission/permission.module';
-import { LeaveTypeModule } from './leave_type/leave_type.module';
-import { HolidaysModule } from './holidays/holidays.module';
-import { EmployeeModule } from './employee/employee.module';
-import { LeaveModule } from './leave/leave.module';
-import { FiscalModule } from './fiscal/fiscal.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.dev.env',
+      envFilePath: '.prod.env',
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGO_URL_DB),

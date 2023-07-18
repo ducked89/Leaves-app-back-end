@@ -6,7 +6,7 @@ export default class Leave {
   number_of_days = 0; //
   start_date = ''; // 25-07-2023,
   end_date = ''; //11-08-2023,
-  justification = ''; //Lorem Ipsum dolr sit ...
+  justify = ''; //Lorem Ipsum dolr sit ...
   remarks = ''; //Lorem Ipsum dolr sit ...
 
   construction(): any {
@@ -18,7 +18,7 @@ export default class Leave {
       number_of_days: this.number_of_days,
       start_date: this.start_date,
       end_date: this.end_date,
-      justify: this.justification,
+      justify: this.justify,
       remarks: this.remarks,
     };
   }

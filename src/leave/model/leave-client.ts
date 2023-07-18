@@ -19,7 +19,7 @@ const LeaveClient = (request: any): Leave | any => {
     employee: request.employee,
     leave_type: request.leave_type,
     number_of_days: request.number_of_days,
-    justification: '',
+    justify: request.justify,
     remarks: '',
   });
 };

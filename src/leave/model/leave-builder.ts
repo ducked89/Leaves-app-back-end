@@ -50,7 +50,7 @@ export class LeaveBuilder implements ILeaveBuilder {
     return this;
   }
   setJustification(justify: string): this {
-    this.leave.justification = justify;
+    this.leave.justify = justify;
     return this;
   }
   setRemark(remark: string): this {
