@@ -105,7 +105,7 @@ jobs:
         run: |
           yarn global add sonarqube-scanner
           sonar-scanner \
-            -Dsonar.organization=default \
+            -Dsonar.organization=lkevenson \
             -Dsonar.projectKey=$SONAR_PROJECT_KEY \
             -Dsonar.projectName=$SONAR_PROJECT_NAME \
             -Dsonar.language=TypeScript \
