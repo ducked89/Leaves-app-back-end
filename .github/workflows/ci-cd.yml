@@ -104,10 +104,13 @@ jobs:
         run: |
           yarn global add sonarqube-scanner
           sonar-scanner \
+            -Dsonar.organization=default \
+            -Dsonar.projectKey=leaves-app-backend \
             -Dsonar.projectKey=nestjs-project \
+            -Dsonar.language=TypeScript \
             -Dsonar.sources=src \
             -Dsonar.host.url=$SONAR_HOST_URL \
-            -Dsonar.login=$SONAR_TOKEN
+            -Dsonar.token=$SONAR_TOKEN
 
   deploy-test:
     name: Deploy to Kubernetes (Test Environment)
