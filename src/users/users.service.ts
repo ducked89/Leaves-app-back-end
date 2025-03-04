@@ -10,7 +10,7 @@ import { User } from './schema/user.schema';
 @Injectable()
 export class UsersService extends BaseService<User> {
   constructor(
-    @InjectModel(User.name) protected readonly userModel: Model<User>,
+    @InjectModel(User.name) protected readonly userModel: Model<User>
   ) {
     super(userModel);
   }
@@ -50,7 +50,7 @@ export class UsersService extends BaseService<User> {
   async findByEmail(email: string): Promise<User | any> {
     try {
       return (await this.userModel.findOne({ email: email })).populate(
-        'role_id',
+        'role_id'
       );
     } catch (error) {
       return { success: false, error: true, msg: error.message };
@@ -78,7 +78,7 @@ export class UsersService extends BaseService<User> {
 
   async updatePassword(
     id: string,
-    updateUserDto: UpdateUserDto,
+    updateUserDto: UpdateUserDto
   ): Promise<User | any> {
     try {
       if (updateUserDto.newPassword !== updateUserDto.confirmPassword) {
@@ -103,7 +103,7 @@ export class UsersService extends BaseService<User> {
         {
           password: hashedPassword,
         },
-        { new: true },
+        { new: true }
       );
       return passChanged;
     } catch (error) {
@@ -118,7 +118,7 @@ export class UsersService extends BaseService<User> {
         {
           deleted: false,
         },
-        { new: true },
+        { new: true }
       );
       return enableUser;
     } catch (error) {
@@ -133,7 +133,7 @@ export class UsersService extends BaseService<User> {
         {
           deleted: true,
         },
-        { new: true },
+        { new: true }
       );
       return deletedUser;
     } catch (error) {

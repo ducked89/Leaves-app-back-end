@@ -11,7 +11,7 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       transform: true,
-    }),
+    })
   );
 
   await app.listen(5001);

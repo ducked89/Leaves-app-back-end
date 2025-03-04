@@ -38,7 +38,7 @@ export class LeaveTypeController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateLeaveTypeDto: UpdateLeaveTypeDto,
+    @Body() updateLeaveTypeDto: UpdateLeaveTypeDto
   ) {
     return this.leaveTypeService.update(id, updateLeaveTypeDto);
   }

@@ -7,7 +7,7 @@ import { Setting } from './entities/setting.schema';
 @Injectable()
 export class SettingsService extends BaseService<Setting> {
   constructor(
-    @InjectModel(Setting.name) protected readonly settingModel: Model<Setting>,
+    @InjectModel(Setting.name) protected readonly settingModel: Model<Setting>
   ) {
     super(settingModel);
   }

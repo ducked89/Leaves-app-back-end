@@ -8,7 +8,7 @@ import { Department } from './entities/department.schema';
 export class DepartmentService extends BaseService<Department> {
   constructor(
     @InjectModel(Department.name)
-    protected readonly departmentModel: Model<Department>,
+    protected readonly departmentModel: Model<Department>
   ) {
     super(departmentModel);
   }

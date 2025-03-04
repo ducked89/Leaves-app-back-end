@@ -9,7 +9,7 @@ import { Holiday } from './entities/holiday.schema';
 @Injectable()
 export class HolidaysService extends BaseService<Holiday> {
   constructor(
-    @InjectModel(Holiday.name) protected holidayModel: Model<Holiday>,
+    @InjectModel(Holiday.name) protected holidayModel: Model<Holiday>
   ) {
     super(holidayModel);
   }

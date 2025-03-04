@@ -7,7 +7,7 @@ import { LeaveType } from './entities/leave_type.schema';
 @Injectable()
 export class LeaveTypeService extends BaseService<LeaveType> {
   constructor(
-    @InjectModel(LeaveType.name) protected leaveTypeModel: Model<LeaveType>,
+    @InjectModel(LeaveType.name) protected leaveTypeModel: Model<LeaveType>
   ) {
     super(leaveTypeModel);
   }

@@ -8,7 +8,7 @@ import { Permission } from './entities/permission.schema';
 export class PermissionService extends BaseService<Permission> {
   constructor(
     @InjectModel(Permission.name)
-    protected readonly permissionModel: Model<Permission>,
+    protected readonly permissionModel: Model<Permission>
   ) {
     super(permissionModel);
   }

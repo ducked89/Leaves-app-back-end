@@ -21,7 +21,7 @@ export class RolesController {
   @Post()
   create(
     @Body() createRoleDto: CreateRoleDto,
-    @Body('permissions') ids: string[],
+    @Body('permissions') ids: string[]
   ) {
     return this.rolesService.create({
       ...createRoleDto,
@@ -43,7 +43,7 @@ export class RolesController {
   update(
     @Param('id') id: string,
     @Body() updateRoleDto: UpdateRoleDto,
-    @Body('permissions') ids: string[],
+    @Body('permissions') ids: string[]
   ) {
     return this.rolesService.update(id, {
       ...updateRoleDto,

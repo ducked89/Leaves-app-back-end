@@ -9,7 +9,7 @@ const LeaveClient = (request: any): Leave | any => {
 
   const result: any = addBusinessDays(
     new Date(request.start_date),
-    request.number_of_days,
+    request.number_of_days
   );
 
   return Director.construct({

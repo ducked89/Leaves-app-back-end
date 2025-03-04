@@ -12,7 +12,7 @@ import { Employee, StatusEmployee } from './entities/employee.schema';
 @Injectable()
 export class EmployeeService extends BaseService<Employee> {
   constructor(
-    @InjectModel(Employee.name) protected employeeModel: Model<Employee>,
+    @InjectModel(Employee.name) protected employeeModel: Model<Employee>
   ) {
     super(employeeModel);
   }
@@ -50,7 +50,7 @@ export class EmployeeService extends BaseService<Employee> {
   }
 
   async getByDepartmentId(
-    departmentId: string,
+    departmentId: string
   ): Promise<Employee[] | Response<any>> {
     try {
       const employeeByDepartment = await this.employeeModel
@@ -103,7 +103,7 @@ export class EmployeeService extends BaseService<Employee> {
               ? StatusEmployee.DISABLE
               : StatusEmployee.ENABLE,
         },
-        { new: true },
+        { new: true }
       );
 
       return true;

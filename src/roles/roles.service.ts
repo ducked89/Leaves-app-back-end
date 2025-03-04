@@ -8,7 +8,7 @@ import { Role } from './entities/role.schema';
 @Injectable()
 export class RolesService extends BaseService<Role> {
   constructor(
-    @InjectModel(Role.name) protected readonly roleModel: Model<Role>,
+    @InjectModel(Role.name) protected readonly roleModel: Model<Role>
   ) {
     super(roleModel);
   }

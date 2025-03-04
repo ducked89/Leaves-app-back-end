@@ -7,7 +7,7 @@ import { FiscalYear } from './entities/fiscal.schema';
 @Injectable()
 export class FiscalService extends BaseService<FiscalYear> {
   constructor(
-    @InjectModel(FiscalYear.name) protected leaveModel: Model<FiscalYear>,
+    @InjectModel(FiscalYear.name) protected leaveModel: Model<FiscalYear>
   ) {
     super(leaveModel);
   }

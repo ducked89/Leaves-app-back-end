@@ -24,7 +24,7 @@ export class LeaveService extends BaseService<Leave> {
   constructor(
     @InjectModel(Leave.name) protected leaveModel: Model<Leave>,
     protected employeeService: EmployeeService,
-    protected leaveTypeService: LeaveTypeService,
+    protected leaveTypeService: LeaveTypeService
   ) {
     super(leaveModel);
   }
@@ -33,12 +33,12 @@ export class LeaveService extends BaseService<Leave> {
     try {
       if (!data.employee || !data.leave_type) {
         throw new BadRequestException(
-          'Employee or leave type are not specified',
+          'Employee or leave type are not specified'
         );
       }
 
       const empFind: Employee | any = await this.employeeService.findById(
-        data.employee,
+        data.employee
       );
 
       if (
@@ -46,12 +46,12 @@ export class LeaveService extends BaseService<Leave> {
         (empFind && empFind?.status === StatusEmployee.DISABLE)
       ) {
         throw new BadRequestException(
-          'Employee does not exist. Please, contact your administrator.',
+          'Employee does not exist. Please, contact your administrator.'
         );
       }
 
       const leaveType: LeaveType | any = await this.leaveTypeService.findById(
-        data.leave_type,
+        data.leave_type
       );
       if (leaveType && leaveType.success === false) {
         throw new BadRequestException('Leave type does not exist.');
@@ -61,18 +61,18 @@ export class LeaveService extends BaseService<Leave> {
         data.number_of_days > leaveType.number_of_days
       ) {
         throw new BadRequestException(
-          `You can not get ${data.number_of_days} for ${leaveType.name} leaves`,
+          `You can not get ${data.number_of_days} for ${leaveType.name} leaves`
         );
       }
 
       if (differenceInYears(new Date(), new Date(empFind.Joining_date)) === 0) {
         throw new BadRequestException(
-          'You are not eligible for such a request.',
+          'You are not eligible for such a request.'
         );
       }
 
       const leaves_for_this_employee: Leave[] | any = await this.getByEmployee(
-        data.employee.toString(),
+        data.employee.toString()
       );
 
       if (
@@ -89,7 +89,7 @@ export class LeaveService extends BaseService<Leave> {
               return accumulator + currentValue.leave_type.number_of_days;
             }
           },
-          0,
+          0
         );
 
         // Compare sumOfLeaveDay to the number of days for the leave type already taken
@@ -98,7 +98,7 @@ export class LeaveService extends BaseService<Leave> {
           leaveType.number_of_days > 0
         ) {
           throw new BadRequestException(
-            'you have accessed the number of days allowed',
+            'you have accessed the number of days allowed'
           );
         }
       }
@@ -193,7 +193,7 @@ export class LeaveService extends BaseService<Leave> {
 
   async changeStatus(
     id: string,
-    status: string,
+    status: string
   ): Promise<boolean | Response<any>> {
     try {
       const leaveFound = await this.findById(id);
