@@ -15,11 +15,11 @@
     "lint": "eslint \"{src,apps,libs}/**/*.ts\" --max-warnings 1000 --fix",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
+    "test:cov": "jest --coverage --passWithNoTests",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prettier": "prettier --write 'src/**/*.ts'",
-    "prettier:check": "prettier --check 'src/**/*.ts'"
+    "prettier": "prettier --write \"src/**/*.ts\"",
+    "prettier:check": "prettier --check \"src/**/*.ts\"'"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
