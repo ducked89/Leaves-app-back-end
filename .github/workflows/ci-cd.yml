@@ -100,12 +100,12 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
         run: |
           yarn global add sonarqube-scanner
           sonar-scanner \
             -Dsonar.organization=default \
-            -Dsonar.projectKey=leaves-app-backend \
-            -Dsonar.projectKey=nestjs-project \
+            -Dsonar.projectKey=$SONAR_PROJECT_KEY \
             -Dsonar.language=TypeScript \
             -Dsonar.sources=src \
             -Dsonar.host.url=$SONAR_HOST_URL \
