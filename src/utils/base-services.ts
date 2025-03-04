@@ -1,6 +1,6 @@
-import { Model } from 'mongoose';
-import { BaseSchema } from 'src/utils/base-entity';
-import { Response } from './response';
+import { Model } from "mongoose";
+import { BaseSchema } from "src/utils/base-entity";
+import { Response } from "./response";
 
 export abstract class BaseService<T extends BaseSchema> {
   constructor(private readonly repository: Model<T>) {}

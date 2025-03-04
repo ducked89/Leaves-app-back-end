@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { BaseService } from 'src/utils/base-services';
-import { Response } from 'src/utils/response';
-import { Role } from './entities/role.schema';
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { BaseService } from "src/utils/base-services";
+import { Response } from "src/utils/response";
+import { Role } from "./entities/role.schema";
 
 @Injectable()
 export class RolesService extends BaseService<Role> {
@@ -15,7 +15,7 @@ export class RolesService extends BaseService<Role> {
 
   async findAll(): Promise<Role[] | Response<any>> {
     try {
-      return this.roleModel.find({}, { _v: 0 }).populate('role_permissions');
+      return this.roleModel.find({}, { _v: 0 }).populate("role_permissions");
     } catch (error) {
       return { success: false, error: error.message };
     }
@@ -23,7 +23,7 @@ export class RolesService extends BaseService<Role> {
 
   async findById(id: string): Promise<Role | Response<any>> {
     try {
-      return this.roleModel.findById(id).populate('role_permissions');
+      return this.roleModel.findById(id).populate("role_permissions");
     } catch (error) {
       return { success: false, error: error.message };
     }

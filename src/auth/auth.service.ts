@@ -1,7 +1,7 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import * as bcrypt from 'bcryptjs';
-import { UsersService } from 'src/users/users.service';
+import { BadRequestException, Injectable } from "@nestjs/common";
+import { JwtService } from "@nestjs/jwt";
+import * as bcrypt from "bcryptjs";
+import { UsersService } from "src/users/users.service";
 
 @Injectable()
 export class AuthService {
@@ -23,7 +23,7 @@ export class AuthService {
 
   async login(user: any): Promise<any> {
     if (user.success === false) {
-      throw new BadRequestException('Invalid credentials');
+      throw new BadRequestException("Invalid credentials");
     }
     const payload = {
       email: user.email,
